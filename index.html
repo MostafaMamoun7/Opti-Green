@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opto-electronics Project Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #0a192f;
+            background-image: 
+                radial-gradient(#ffffff15 1px, transparent 1px),
+                radial-gradient(#ffffff15 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, #00f2fe15 0%, #4facfe15 100%),
+                linear-gradient(0deg, transparent 97%, #4facfe 100%),
+                linear-gradient(90deg, transparent 97%, #4facfe 100%);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #1a2942 0%, #131e30 100%);
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.1);
+            border: 1px solid #4facfe30;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 20px, #4facfe10 20px, #4facfe10 40px),
+                repeating-linear-gradient(90deg, transparent, transparent 20px, #4facfe10 20px, #4facfe10 40px);
+            animation: circuit 8s linear infinite;
+        }
+
+        @keyframes circuit {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(-40px, -40px);
+            }
+        }
+
+        h1 {
+            color: #4facfe;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 0 0 10px rgba(79, 172, 254, 0.3);
+        }
+
+        header p {
+            color: #e0e0e0;
+            position: relative;
+        }
+
+        .section {
+            background: linear-gradient(135deg, #1a2942 0%, #131e30 100%);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.1);
+            border: 1px solid #4facfe30;
+            position: relative;
+            overflow: hidden;
+            color: #e0e0e0;
+        }
+
+        .section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background-image: 
+                radial-gradient(circle at center, transparent 8px, #4facfe10 8px, #4facfe10 10px, transparent 10px),
+                radial-gradient(circle at center, transparent 8px, #4facfe10 8px, #4facfe10 10px, transparent 10px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            opacity: 0.5;
+        }
+
+        .section h2 {
+            color: #4facfe;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4facfe30;
+            padding-bottom: 10px;
+            text-shadow: 0 0 10px rgba(79, 172, 254, 0.3);
+        }
+
+        /* Team Slideshow Styles */
+        .team-slideshow {
+            position: relative;
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px 0;
+        }
+
+        .team-slide {
+            display: none;
+            animation: fadeEffect 0.5s;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1f3555 0%, #182841 100%);
+            border-radius: 6px;
+            border: 1px solid #4facfe30;
+        }
+
+        .team-slide.active {
+            display: block;
+        }
+
+        @keyframes fadeEffect {
+            from {opacity: 0.4;}
+            to {opacity: 1;}
+        }
+
+        .team-slide img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+            border: 2px solid #4facfe30;
+        }
+
+        .nav-buttons {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border: none;
+            color: #0a192f;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            box-shadow: 0 2px 10px rgba(79, 172, 254, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.5);
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        .nav-btn i {
+            font-size: 20px;
+        }
+
+        /* Components Section Styles */
+        .components-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .component-item {
+            background: linear-gradient(135deg, #1f3555 0%, #182841 100%);
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #4facfe30;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .component-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .component-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #4facfe50;
+            background: #131e30;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .component-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .component-details {
+            flex: 1;
+        }
+
+        .component-details h3 {
+            color: #4facfe;
+            margin-bottom: 10px;
+        }
+        .modules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .module-item {
+            background: linear-gradient(135deg, #1f3555 0%, #182841 100%);
+            border-radius: 8px;
+            border: 1px solid #4facfe30;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .module-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .module-header {
+            padding: 0 0 20px 0;
+        }
+
+        .module-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-bottom: 1px solid #4facfe30;
+            margin-bottom: 20px;
+        }
+
+        .module-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .module-details {
+            padding: 0 20px;
+        }
+
+        .module-details h3 {
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .module-components {
+            padding: 20px;
+            background: rgba(79, 172, 254, 0.05);
+            border-top: 1px solid #4facfe30;
+        }
+
+        .module-components h4 {
+            color: #4facfe;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .component-item {
+            background: linear-gradient(135deg, #1a2942 0%, #131e30 100%);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #4facfe30;
+            transition: transform 0.3s ease;
+        }
+
+        .component-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .component-image {
+            width: 100%;
+            height: 150px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #4facfe50;
+            margin-bottom: 15px;
+        }
+
+        .component-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .component-details h5 {
+            color: #4facfe;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+
+            .nav-buttons {
+                padding: 0 10px;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .component-image {
+                height: 150px;
+            }
+
+            .module-image {
+                height: 200px;
+            }
+
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .module-components {
+                padding: 15px;
+            }
+
+            .component-image {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Opti Green</h1>
+        <p>Solar Energy Project in a Smart Home</p>
+    </header>
+
+    <main>
+        <section class="section" id="description">
+            <h2>Project Description</h2>
+            <p>
+                Our project is a solar-powered “smart home” system, which uses advanced solar 
+financing and sun tracking technologies, along with smart security and lighting 
+features. The project aims to provide a basic, safe, and energy-efficient home, 
+resulting in a user experience that is effective technical solutions for modern 
+homes.
+            </p>
+        </section>
+
+        <section class="section" id="team">
+            <h2>Team Members</h2>
+            <div class="team-slideshow">
+                <div class="team-slide active">
+                    <img src="/project1/img/IMG-20241221-WA0031.jpg" alt="Team Member 1">
+                    <h3>Mohamed Ayman Abd El-Latif</h3>
+                    <p>Section 2</p>
+                    <p>Electronics Engineering Department</p>
+                </div>
+                <div class="team-slide">
+                    <img src="/project1/img/IMG-20241221-WA0033.jpg" alt="Team Member 2">
+                    <h3>Ahmed Ibrahim Abd El-Fattah</h3>
+                    <p>Section 1</p>
+                    <p>Electronics Engineering Department</p>
+                </div>
+                <div class="team-slide">
+                    <img src="/project1/img/IMG-20241221-WA0062.jpg" alt="Team Member 3">
+                    <h3>Ibrahim Mohamed Badr</h3>
+                    <p>Section 1</p>
+                    <p>Electronics Engineering Department</p>
+                </div>
+                <div class="team-slide">
+                    <img src="/project1/img/IMG-20241221-WA0030.jpg" alt="Team Member 1">
+                    <h3>Mohamed Ibrahim Abd El-Glel</h3>
+                    <p>Section 2</p>
+                    <p>Electronics Engineering Department</p>
+                </div>
+                <div class="team-slide">
+                    <img src="/project1/img/IMG-20241221-WA0032.jpg" alt="Team Member 2">
+                    <h3>Mohamad Ibrahim Eldeeb</h3>
+                    <p>Section 2</p>
+                    <p>Electronics Engineering Department</p>
+                </div>
+                <div class="team-slide">
+                    <img src="/project1/img/IMG-20241221-WA0029.jpg" alt="Team Member 3">
+                    <h3>Mohamed Saeed Saad</h3>
+                    <p>Section 2</p>
+                    <p>Electronics Engineering Department</p>
+                </div>
+                <div class="team-slide">
+                    <img src="/project1/img/IMG-20241221-WA0028.jpg" alt="Team Member 3">
+                    <h3>Karim Fikry Ramadan</h3>
+                    <p>Section 2</p>
+                    <p>Electronics Engineering Department</p>
+                </div>
+                <div class="team-slide">
+                    <img src="/project1/img/images (12).png" alt="Team Member 3">
+                    <h3>Hosni Ahmed Taha</h3>
+                    <p>Section 1</p>
+                    <p>Electronics Engineering Department</p>
+                </div>
+                <div class="team-slide">
+                    <img src="/project1/img/images (12).png" alt="Team Member 3">
+                    <h3>Mohamed Karam Abdelwahab</h3>
+                    <p>Section 2</p>
+                    <p>Electronics Engineering Department</p>
+                </div>
+                <div class="team-slide">
+                    <img src="/project1/img/images (13).png" alt="Team Member 3">
+                    <h3>Fatima Hamdeen Mahmoud</h3>
+                    <p>Section 2</p>
+                    <p>Electronics Engineering Department</p>
+                </div>
+                <div class="team-slide">
+                    <img src="/project1/img/images (13).png" alt="Team Member 3">
+                    <h3>Alaa Ahmed Mohamed </h3>
+                    <p>Section 1</p>
+                    <p>Electronics Engineering Department</p>
+                </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="changeSlide(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn" onclick="changeSlide(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="modules">
+            <h2>Project Modules</h2>
+            <div class="modules-list">
+                <div class="module-item">
+                    <div class="module-header">
+                        <div class="module-details">
+                            <h3>Tracking solar panel</h3>
+                            
+                        </div>
+                    </div>
+                    <div class="module-components">
+                        <h4>Components Used in This Module</h4>
+                        <div class="components-grid">
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/solar.jpg" alt="Solar Panel">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Solar panels</h5>
+                                    <p>Used to capture sunlight and convert it into electrical 
+                                        energy. This energy can be used to power the system or 
+                                        charge the battery for storage and later use.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/ArduinoUNO.jpg" alt="Arduino UNO">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Arduino UNO</h5>
+                                    <p>It serves as the "brain" of the system. The 
+                                        microcontroller on the Arduino UNO board reads data 
+                                        from the LDRs (light-dependent resistors) and analyzes 
+                                        the direction of the incoming sunlight. Based on this 
+                                        analysis, it controls the servo motors to adjust the angle 
+                                        of the solar panels for optimal sunlight exposure.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/LDR.jpg" alt="LDR">
+                                </div>
+                                <div class="component-details">
+                                    <h5>LDR</h5>
+                                    <p>They are used to measure the intensity of the light falling on 
+                                        them. In the solar tracking system, the LDRs are placed on both 
+                                        sides (right and left) of the solar panel to measure the difference 
+                                        in light intensity. Based on these measurements, the direction in 
+                                        which the solar panels should move to capture the maximum 
+                                        amount of light is determined.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/risistors.jpg" alt="Arduino UNO">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Resistors</h5>
+                                    <p>They are used in the circuit with the LDRs to form a voltage 
+                                        divider. This allows the changes in resistance to be converted into 
+                                        voltage values that can be read by the Arduino, enabling precise 
+                                        control of the solar panels' direction based on the light level.
+                                        </p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/Battery.jpg" alt="Arduino UNO">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Batteries</h5>
+                                    <p>They are used to store the electrical energy collected from the solar 
+                                        panels. The batteries can supply power to the system when needed, 
+                                        such as operating the servo motors to adjust the panels or powering 
+                                        the system during the night when there is no solar energy.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/servo.jpg" alt="Arduino UNO">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Servo motor (SG90)</h5>
+                                    <p>It is used to precisely adjust the angle of the solar panels. Based on 
+                                        the LDR data readings, the servo motor moves to position the solar 
+                                        panels in the optimal direction to capture the maximum amount of 
+                                        light</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/BatteryProtection.jpg" alt="Arduino UNO">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Lithium battery charging circuit</h5>
+                                    <p>Battery Protection
+                                        When the battery reaches the specified voltage (4.2 volts), the 
+                                        protection circuit in the charger automatically disconnects the 
+                                        charging. This protection prevents overcharging, which could 
+                                        damage the battery or even pose a risk of explosion.
+                                        The protection circuit also monitors the battery to prevent deep 
+                                        discharge, disconnecting the battery if its voltage drops to 
+                                        extremely low levels.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/ICLM.jpg" alt="Arduino UNO">
+                                </div>
+                                <div class="component-details">
+                                    <h5>IC(LM2596) DC-DC</h5>
+                                    <p>By using the LM2596 in the project, it ensures that the 
+                                        Arduino receives the appropriate voltage (5V) from the 
+                                        battery (8V), allowing the system to operate continuously 
+                                        and efficiently without the need for another power source. .</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-header">
+                    <div class="module-details">
+                            <h3>Laser Gate</h3>
+                            
+                        </div>
+                    </div>
+                    <div class="module-components">
+                        <h4>Components Used in This Module</h4>
+                        <div class="components-grid">
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/laser.jpg" alt="Microcontroller">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Laser</h5>
+                                    <p>It is used to transfer the signal from the 555 timer to the LDR 
+                                        receiver.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/Button.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Push Button</h5>
+                                    <p>It is used to provide a trigger to the 555 timer.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/IC555.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>IC 555</h5>
+                                    <p>It generates pulses with a duration of half a second and sends 
+                                        them via laser.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/risistors.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Resistors</h5>
+                                    <p>It is used to create a voltage divider with the LDR.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/ArduinoUNO.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Arduino UNO</h5>
+                                    <p>It processes the signal and operates the servo motor.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/LDR.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>LDR</h5>
+                                    <p>The receiver that receives the optical signal and converts it into an 
+                                        electrical signal.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/servo.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Servo motor (SG90)</h5>
+                                    <p>Moving the gate by opening or closing it.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-header">
+                    <div class="module-details">
+                            <h3>-Night Lighting Poles</h3>
+                            
+                        </div>
+                    </div>
+                    <div class="module-components">
+                        <h4>Components Used in This Module</h4>
+                        <div class="components-grid">
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/LDR.jpg" alt="Microcontroller">
+                                </div>
+                                <div class="component-details">
+                                    <h5>LDR</h5>
+                                    <p>Capturing the sunlight signal.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/risistors.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Resistors</h5>
+                                    <p>Resistors are used to create a voltage divider with the LDR.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/transistor.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Transistor</h5>
+                                    <p>The control of the signal between the light-dependent resistor 
+                                        (LDR) and the regular resistor: when the LDR detects light, the 
+                                        transistor disconnects the circuit.</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="module-item">
+                    <div class="module-header">
+                    <div class="module-details">
+                            <h3>Garage Light Sensor</h3>
+                            
+                        </div>
+                    </div>
+                    <div class="module-components">
+                        <h4>Components Used in This Module</h4>
+                        <div class="components-grid">
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/IR.jpg" alt="Microcontroller">
+                                </div>
+                                <div class="component-details">
+                                    <h5>IR Sensor</h5>
+                                    <p>It is a device that uses infrared rays to detect objects or motion 
+                                        between the transmitter and receiver.
+                                        </p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/leds.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>LED</h5>
+                                    <p>The LED lights up when the sensor detects the car entering the 
+                                        garage. </p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/car.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Car</h5>
+                                    <p>When the car enters the garage, the IR sensor detects it and lights 
+                                        up the garage.</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="module-item">
+                    <div class="module-header">
+                    <div class="module-details">
+                            <h3>Remote light control by (IR-receiver)</h3>
+                            
+                        </div>
+                    </div>
+                    <div class="module-components">
+                        <h4>Components Used in This Module</h4>
+                        <div class="components-grid">
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/IC555.jpg" alt="Microcontroller">
+                                </div>
+                                <div class="component-details">
+                                    <h5>IC 555</h5>
+                                    <p>The IC 555 is used as a latch or pulse generator (Monostable Mode) to 
+                                        operate an LED for a specific duration or until it is reset.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/capacitor.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Capacitor</h5>
+                                    <p>Storing the charge for a short period of time and determining the 
+                                        duration for which the output (Pin 3) of the IC 555 remains 
+                                        high.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/IR.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>IR-Receiver</h5>
+                                    <p>It is a sensor designed to receive infrared (IR) signals sent from the 
+                                        remote control.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/leds.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>LED</h5>
+                                    <p>It visually displays the circuit's operating status. It lights up when 
+                                        receiving the "ON" signal from the remote control.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/risistors.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Resistance</h5>
+                                    <p>It is used to determine the current or voltage in the circuit and protect it 
+                                        from damage.</p>
+                                </div>
+                            </div>
+                            <div class="component-item">
+                                <div class="component-image">
+                                    <img src="/project1/component/remote.jpg" alt="ADC Converter">
+                                </div>
+                                <div class="component-details">
+                                    <h5>Remote control</h5>
+                                    <p>When you press a button on the remote, an infrared light-emitting 
+                                        diode (IR LED) is activated to send an invisible light signal to the 
+                                        human eye.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.getElementsByClassName("team-slide");
+
+        function showSlide(n) {
+            // Remove active class from all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            // Update current slide index
+            currentSlide = (n + slides.length) % slides.length;
+            
+            // Show the current slide
+            slides[currentSlide].classList.add("active");
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+    </script>
+</body>
+</html>
